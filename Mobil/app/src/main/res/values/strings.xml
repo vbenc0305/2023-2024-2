@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">Mozijegy</string>
+    <string name="app_name">MoziExpressz</string>
+    <string name="felh">Felhasználónév</string>
+    <string name="login">Bejelentkezés</string>
+    <string name="password">Jelszó</string>
+    <string name="emailhint">valaki@example.com</string>
+    <string name="register">Regisztráció</string>
+    <string name="nevReg">Név:</string>
+    <string name="EmailReg">Email:</string>
+    <string name="JelReg">Jelszó:</string>
+    <string name="Jel2Reg">Jelszó megerősítése:</string>
+    <string name="beluska">Kiss Béla</string>
+    <string name="passTipp1">Jelszó először</string>
+    <string name="passTipp2">Jelszó másodszor</string>
 </resources>
