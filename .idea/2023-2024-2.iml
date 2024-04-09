@@ -2,7 +2,15 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/KaveApp/kave/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Mobil/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/Mobil/app/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/Mobil/app/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Mobil/build" />
+      <excludeFolder url="file://$MODULE_DIR$/angu/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/angu/.vscode" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
