@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+
+body{
+  background-color: #172D13;
+  color: white;
+  margin-top: 100px;
+  justify-content: center !important;
+  display: flex !important;
+}
