@@ -1,16 +1,23 @@
 package bence.varga.mozijegy.view;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.Objects;
 
 import bence.varga.mozijegy.R;
 
@@ -20,6 +27,7 @@ import bence.varga.mozijegy.R;
  */
 public class LoginActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getName();
+    private static final String PREF_KEY = Objects.requireNonNull(MainActivity.class.getPackage()).toString();
     private static final int SECRET_KEY=99;
 
     private EditText emailET;
@@ -28,6 +36,10 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginButtonET;
 
     private Button registerButtonET;
+
+
+    private SharedPreferences preferences;
+
 
     public Button getRegisterButtonET() {
         return registerButtonET;
@@ -62,6 +74,13 @@ public class LoginActivity extends AppCompatActivity {
         return loginButtonET;
     }
 
+    public SharedPreferences getPreferences() {
+        return preferences;
+    }
+
+    public void setPreferences() {
+        preferences=getSharedPreferences(PREF_KEY,MODE_PRIVATE);
+    }
 
     /**
      * Inicializálja a változókat az UI elemekkel.
@@ -78,14 +97,39 @@ public class LoginActivity extends AppCompatActivity {
      * Az bejelentkezési logikát kezeli.
      */
     public void loginLogic(){
-        //Bejelentkezés logika
         getLoginButtonET().setOnClickListener(v -> {
             String userNameStr = getEmailET().getText().toString();
             String passwordStr = getPasswordET().getText().toString();
 
-            Log.i(LOG_TAG, "Bejelentkezett: " + userNameStr + ", jelszó:" + passwordStr);
+            if (TextUtils.isEmpty(userNameStr) || TextUtils.isEmpty(passwordStr)) {
+                // Ha valamelyik mező üres, megjelenítünk egy felugró buborék ablakot
+                Snackbar.make(v, "Töltse ki mindkét mezőt!", Snackbar.LENGTH_LONG).show();
+            } else {
+                // Ha mindkét mező ki van töltve, folytathatjuk a bejelentkezést
+                if (validateCredentials(userNameStr, passwordStr)) {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("isLoggedIn", true);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Hibás felhasználónév vagy jelszó", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
     }
+
+    /**
+     * Ellenőrzi a felhasználói bevitelt.
+     *
+     * @param email    A felhasználó által megadott e-mail cím
+     * @param password A felhasználó által megadott jelszó
+     * @return true, ha a bevitel helyes, különben false
+     */
+    private boolean validateCredentials(String email, String password) {
+        // Példa: Egyszerű ellenőrzés, hogy az e-mail cím és jelszó nem üres
+        return !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password);
+    }
+
 
     /**
      * Inicializálja a nézetet.
@@ -111,6 +155,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setPreferences();
 
         //Init logic
         super.onCreate(savedInstanceState);
@@ -121,7 +166,40 @@ public class LoginActivity extends AppCompatActivity {
         loginLogic();
         registerLogic();
 
+        Log.i(LOG_TAG,"onCreate");
+
     }
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(LOG_TAG,"onStart");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(LOG_TAG,"onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(LOG_TAG,"onDestroy");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences.Editor edit = preferences.edit();
+        edit.putString("email",getEmailET().getText().toString());
+        edit.apply();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 }

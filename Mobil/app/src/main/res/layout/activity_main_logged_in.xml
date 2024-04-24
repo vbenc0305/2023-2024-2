@@ -1,29 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- activity_main_logged_in.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.MainActivity"
+    android:id="@+id/mainLogged"
 
     >
 
-    <!-- Fő tartalom -->
+    <!-- Fő tartalom a bejelentkezés után -->
     <TextView
-        android:id="@+id/textViewContent"
+        android:id="@+id/textViewLoggedInContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Hello"
+        android:text="@string/LoginSuccesfull"
         android:layout_centerInParent="true" />
 
-    <!-- Bejelentkezés gomb -->
+
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/buttonLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:layout_below="@id/textViewContent"
+        android:text="@string/logout"
+        android:layout_below="@id/textViewLoggedInContent"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp" />
+
 
 </RelativeLayout>

@@ -12,4 +12,8 @@
     <string name="beluska">Kiss Béla</string>
     <string name="passTipp1">Jelszó először</string>
     <string name="passTipp2">Jelszó másodszor</string>
+    <string name="cancel">Mégse</string>
+    <string name="Hello">Üdvözöllek az alkalmazásban!</string>
+    <string name="LoginSuccesfull">Sikeresen bejelentkeztél!</string>
+    <string name="logout">Kijelentkezés</string>
 </resources>

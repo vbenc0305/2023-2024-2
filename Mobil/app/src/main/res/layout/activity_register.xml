@@ -11,7 +11,7 @@
         android:id="@+id/registerNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/def_margin"
         android:ems="10"
         android:hint="@string/beluska"
         android:inputType="text"
@@ -25,23 +25,23 @@
         android:id="@+id/registerEmailEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginTop="@dimen/def_margin"
         android:ems="10"
         android:hint="@string/emailhint"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/RegisterPasswordEditText"
+        app:layout_constraintBottom_toTopOf="@+id/registerPasswordEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerNameEditText"
         app:layout_constraintVertical_bias="0.333"
         android:autofillHints="emailAddress" />
 
     <EditText
-        android:id="@+id/RegisterPasswordEditText"
+        android:id="@+id/registerPasswordEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginTop="@dimen/def_margin"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/registerPasswordAgainEditText"
@@ -55,23 +55,23 @@
         android:id="@+id/registerPasswordAgainEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginTop="20dp"
+        android:autofillHints="password"
         android:ems="10"
+        android:hint="@string/passTipp2"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegisterPasswordEditText"
-        android:autofillHints="password"
-        android:hint="@string/passTipp2"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/registerPasswordEditText" />
 
 
     <TextView
         android:id="@+id/NevTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="@dimen/def_margin"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginBottom="@dimen/def_margin"
         android:text="@string/nevReg"
         app:layout_constraintBottom_toTopOf="@+id/registerNameEditText"
         app:layout_constraintStart_toStartOf="parent" />
@@ -80,30 +80,60 @@
         android:id="@+id/EmailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginBottom="@dimen/def_margin"
         android:text="@string/EmailReg"
         app:layout_constraintBottom_toTopOf="@+id/registerEmailEditText"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerNameEditText" />
 
     <TextView
         android:id="@+id/PasswordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginTop="@dimen/def_margin"
+        android:layout_marginBottom="@dimen/def_margin"
         android:text="@string/JelReg"
-        app:layout_constraintBottom_toTopOf="@+id/RegisterPasswordEditText"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/registerPasswordEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerEmailEditText" />
 
     <TextView
         android:id="@+id/PasswordAgainTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
         android:text="@string/Jel2Reg"
         app:layout_constraintBottom_toTopOf="@+id/registerPasswordAgainEditText"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerPasswordEditText" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/def_margin"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerPasswordAgainEditText">
+
+        <Button
+            android:id="@+id/RegButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+
+            android:text="@string/cancel" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
