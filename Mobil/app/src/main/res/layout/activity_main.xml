@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,8 +14,8 @@
         android:id="@+id/textViewContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Hello"
-        android:layout_centerInParent="true" />
+        android:layout_centerHorizontal="true"
+        android:text="@string/Hello" />
 
     <!-- Bejelentkezés gomb -->
     <Button
@@ -25,5 +26,30 @@
         android:layout_below="@id/textViewContent"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp" />
+
+    <ImageView
+        android:id="@+id/kep1"
+        android:layout_width="185dp"
+        android:layout_height="170dp"
+        android:layout_below="@id/buttonLogin"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginTop="56dp"
+        app:srcCompat="@drawable/monkeyman"/>
+    <ImageView
+        android:id="@+id/kep2"
+        android:layout_width="185dp"
+        android:layout_height="170dp"
+        android:layout_below="@id/kep1"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginTop="56dp"
+        app:srcCompat="@drawable/dune"/>
+    <ImageView
+        android:id="@+id/kep3"
+        android:layout_width="185dp"
+        android:layout_height="170dp"
+        android:layout_below="@id/kep2"
+        android:layout_marginStart="@dimen/def_margin"
+        android:layout_marginTop="56dp"
+        app:srcCompat="@drawable/rebelmoon"/>
 
 </RelativeLayout>
