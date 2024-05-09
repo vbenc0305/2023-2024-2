@@ -16,4 +16,5 @@
     <string name="Hello">Üdvözöllek az alkalmazásban!</string>
     <string name="LoginSuccesfull">Sikeresen bejelentkeztél!</string>
     <string name="logout">Kijelentkezés</string>
+    <string name="google_login_btn_text">Bejelentkezés Google fiókkal</string>
 </resources>

@@ -19,10 +19,10 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_insertBtn_clicked();
 
 private:
     Ui::MainWindow *ui;
-    QSqlDatabase Db_Conn;
+    QSqlDatabase db;
+
 };
 #endif // MAINWINDOW_H

@@ -29,14 +29,23 @@ public class LoginActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getName();
     private static final String PREF_KEY = Objects.requireNonNull(MainActivity.class.getPackage()).toString();
     private static final int SECRET_KEY=99;
-
     private EditText emailET;
     private EditText passwordET;
-
     private Button loginButtonET;
-
     private Button registerButtonET;
+    private Button googleSignInButtonET;
 
+    public Button getGoogleSignInButtonET() {
+        return googleSignInButtonET;
+    }
+
+    public void setGoogleSignInButtonET(Button googleSignInButtonET) {
+        this.googleSignInButtonET = googleSignInButtonET;
+    }
+
+    public void setPreferences(SharedPreferences preferences) {
+        this.preferences = preferences;
+    }
 
     private SharedPreferences preferences;
 
@@ -44,11 +53,9 @@ public class LoginActivity extends AppCompatActivity {
     public Button getRegisterButtonET() {
         return registerButtonET;
     }
-
     public void setRegisterButtonET(Button registerButtonET) {
         this.registerButtonET = registerButtonET;
     }
-
     /** getterek és setterek**/
     public void setEmailET(EditText emailET) {
        this.emailET = emailET;
@@ -90,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
         setPasswordET(findViewById(R.id.editTextPassword));
         setLoginButtonET(findViewById(R.id.LoginButton));
         setRegisterButtonET(findViewById(R.id.RegisterButton));
+        setGoogleSignInButtonET(findViewById(R.id.google_sign_in_button));
     }
 
 
@@ -115,6 +123,12 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Hibás felhasználónév vagy jelszó", Toast.LENGTH_SHORT).show();
                 }
             }
+        });
+    }
+
+    public void GoogleSignInLogic(){
+        getGoogleSignInButtonET().setOnClickListener(v -> {
+
         });
     }
 
@@ -146,7 +160,7 @@ public class LoginActivity extends AppCompatActivity {
     public void registerLogic(){
         getRegisterButtonET().setOnClickListener(v -> {
             Intent intent = new Intent(this, RegisterActivity.class);
-            intent.putExtra("SECRET_KEY",SECRET_KEY);
+            //intent.putExtra("SECRET_KEY",SECRET_KEY);
             //TODO.
             startActivity(intent);
         });

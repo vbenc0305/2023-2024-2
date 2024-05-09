@@ -5,12 +5,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
@@ -23,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     private static final String PREF_KEY = Objects.requireNonNull(MainActivity.class.getPackage()).toString();
 
     private SharedPreferences preferences;
-
+    private FirebaseAuth mAuth;
 
 
     private static final int SECRET_KEY=99;
@@ -126,6 +133,8 @@ public class RegisterActivity extends AppCompatActivity {
             Log.e(LOG_TAG, "Baj van főni");
             finish();
         }
+
+        mAuth = FirebaseAuth.getInstance();
         valtozoInit();
         registerLogic();
         cancelLogic();
@@ -145,8 +154,27 @@ public class RegisterActivity extends AppCompatActivity {
             }
             Log.e(LOG_TAG, "Regisztrált" + username + "jelszo:" + password);
             //TODO: A Reg. funkcionalítást megvalósítani
+
+            mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if(task.isSuccessful()){
+                        Log.d(LOG_TAG, "Sikeres regisztráció");
+                    }else{
+                        Log.d(LOG_TAG, "Sikertelen regisztráció");
+                        Toast.makeText(RegisterActivity.this, "Sikertelen regisztráció"+task.getException(),Toast.LENGTH_SHORT).show();
+                        goToLogin();
+                    }
+                }
+            });
         });
 
+
+
+    }
+
+    private void goToLogin(){
+        finish();
     }
 
     private void cancelLogic(){

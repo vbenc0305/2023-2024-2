@@ -12,6 +12,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.Objects;
 
 import bence.varga.mozijegy.R;
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button LoginButton;
     private Button logoutButton;
+    private FirebaseUser user;
 
 
 
@@ -52,10 +56,11 @@ public class MainActivity extends AppCompatActivity {
         logoutButton = findViewById(R.id.buttonLogout);
 
         boolean isLoggedIn = getIntent().getBooleanExtra("isLoggedIn", false);
-        if (isLoggedIn) {
+        user= FirebaseAuth.getInstance().getCurrentUser();
+        if (user!= null) {
             // Ha bejelentkezett, akkor megváltoztatjuk a főoldal tartalmát
             String userName = getSharedPreferences(PREF_KEY, MODE_PRIVATE).getString("email", "");
-            Toast.makeText(this, "Üdvözöllek, " + userName + "!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Üdvözöllek, " + user.getDisplayName() + "!", Toast.LENGTH_SHORT).show();
 
             // A kijelentkezés gomb logikájának beállítása
             setupLogoutButton();
