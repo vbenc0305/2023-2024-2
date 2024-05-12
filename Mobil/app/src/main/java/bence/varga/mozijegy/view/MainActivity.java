@@ -7,14 +7,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
-import androidx.core.view.MenuItemCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -34,7 +32,7 @@ import bence.varga.mozijegy.model.Movie;
 /**
  * A fő tevékenység az alkalmazásban, amely kezeli a bejelentkezést és a kijelentkezést.
  */
-public class MainActivity extends AppCompatActivity {
+public class    MainActivity extends AppCompatActivity {
 
     private Button logoutButton;
     // Üzenetek
@@ -88,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         queryData();
         initData();
     }
+
 
     private void queryData() {
        mItem.clear();
@@ -164,25 +163,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.filmlismenu, menu);
-        MenuItem menuItem = menu.findItem(R.id.search_bar);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-               Log.d(LOG_TAG, newText);
-               mAdapter.getFilter().filter(newText);
-               return false;
-            }
-        });
-
         return true;
+    }
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override

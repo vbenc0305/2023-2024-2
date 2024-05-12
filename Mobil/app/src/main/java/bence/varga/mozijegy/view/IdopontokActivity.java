@@ -71,6 +71,12 @@ public class IdopontokActivity extends AppCompatActivity {
                         Log.e("IdopontokActivity", selectedMovieName +" "+ vetites.getFilmNeve());
                         if(selectedMovieName.equals(vetites.getFilmNeve())) {
                             mVetitesek.add(vetites);
+                            /*
+                            try {
+                                uploadData();
+                            } catch (ParseException e) {
+                                throw new RuntimeException(e);
+                            }*/
                         }
                     }
                     mAdapter.notifyDataSetChanged();
@@ -80,5 +86,26 @@ public class IdopontokActivity extends AppCompatActivity {
                     Log.e("IdopontokActivity", "Hiba a vetítések lekérdezése közben", e);
                 });
     }
+/*
+    private void uploadData() throws ParseException {
+        String[] idoPontFilmNeve = getResources().getStringArray(R.array.vetit_movies);
+        String[] idoPontHelyszin = getResources().getStringArray(R.array.vetit_helyszin);
+        String[] idoPontvetitesIdopont = getResources().getStringArray(R.array.vetit_ido);
+        int szekszam = 40;
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH);
+
+        
+        for (int i  =0; i<idoPontHelyszin.length;i++){
+            Date parsedDate = dateFormat.parse(idoPontvetitesIdopont[i]);
+
+            mVetites.add(new Vetites(
+                    idoPontFilmNeve[i],
+                    idoPontHelyszin[i],
+                    szekszam,
+                    new Timestamp(parsedDate)));
+            Log.e("IdopontokActivity", "Időpont hozzáadva");
+        }
+    }*/
 
 }

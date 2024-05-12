@@ -6,16 +6,26 @@ public class Vetites {
     private String filmNeve;
     private String id;
     private int szekek_szama;
-    private Timestamp vetitesIdeje;
+    private String helyszin;
+
+    public String getHelyszin() {
+        return helyszin;
+    }
+
+    public void setHelyszin(String terem) {
+        this.helyszin = terem;
+    }
+
+    private Timestamp vetitesIdo;
 
     public Vetites() {
     }
 
-    public Vetites(String filmNeve, String id, int szekek_szama, Timestamp vetitesIdeje) {
+    public Vetites(String filmNeve, String helyszin, int szekek_szama, Timestamp vetitesIdo) {
         this.filmNeve = filmNeve;
-        this.id = id;
+        this.helyszin = helyszin;
         this.szekek_szama = szekek_szama;
-        this.vetitesIdeje = vetitesIdeje;
+        this.vetitesIdo = vetitesIdo;
     }
 
     public String getFilmNeve() {
@@ -42,11 +52,11 @@ public class Vetites {
         this.szekek_szama = szekek_szama;
     }
 
-    public Timestamp getVetitesIdeje() {
-        return vetitesIdeje;
+    public Timestamp getVetitesIdo() {
+        return vetitesIdo;
     }
 
-    public void setVetitesIdeje(Timestamp vetitesIdeje) {
-        this.vetitesIdeje = vetitesIdeje;
+    public void setVetitesIdo(Timestamp vetitesIdo) {
+        this.vetitesIdo = vetitesIdo;
     }
 }

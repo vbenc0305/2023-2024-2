@@ -16,7 +16,9 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:text="@string/vetites_ideje"
-            android:textColor="?android:textColorSecondary"/>
+            android:textColor="?android:textColorSecondary" />
+
+
 
         <TextView
             android:id="@+id/szekekszama"
@@ -26,12 +28,20 @@
             android:padding="8dp"
             android:text="@string/sz_kek_sz_ma"/>
 
+        <TextView
+            android:id="@+id/terem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/szekekszama"
+            android:padding="8dp"
+            android:text="@string/terem"/>
+
 
         <Button
             android:id="@+id/foglalasbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/szekekszama"
+            android:layout_below="@id/terem"
             android:text="@string/helyfoglalas"
             />
 

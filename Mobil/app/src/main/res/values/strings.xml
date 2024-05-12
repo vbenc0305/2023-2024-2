@@ -31,6 +31,7 @@
     <string name="vetites_ideje">vetites ideje</string>
     <string name="sz_kek_sz_ma">Székek száma:</string>
     <string name="helyfoglalas">Helyfoglalas</string>
+    <string name="terem">Terem:</string>
 
     <string-array name="movieNames">
         <item>Dune: Part Two</item>
@@ -71,6 +72,8 @@
         <item>Animációs</item>
         <item>Horror</item>
     </string-array>
+    
+    
 
 
     <array name="img">
@@ -85,5 +88,127 @@
         <item>@drawable/spider</item>
         <item>@drawable/beetle</item>
     </array>
+
+    <string-array name="vetit_movies">
+        <item>Dune: Part Two</item>
+        <item>Dune: Part Two</item>
+        <item>Dune: Part Two</item>
+        <item>Joker: Folie à Deux</item>
+        <item>Joker: Folie à Deux</item>
+        <item>Joker: Folie à Deux</item>
+        <item>A Quiet Place: Day One</item>
+        <item>A Quiet Place: Day One</item>
+        <item>A Quiet Place: Day One</item>
+        <item>Love Lies Bleeding</item>
+        <item>Love Lies Bleeding</item>
+        <item>Love Lies Bleeding</item>
+        <item>Furiosa: A Mad Max Saga</item>
+        <item>Furiosa: A Mad Max Saga</item>
+        <item>Furiosa: A Mad Max Saga</item>
+        <item>The Lord of the Rings: The War of the Rohirrim</item>
+        <item>The Lord of the Rings: The War of the Rohirrim</item>
+        <item>The Lord of the Rings: The War of the Rohirrim</item>
+        <item>Deadpool and Wolverine</item>
+        <item>Deadpool and Wolverine</item>
+        <item>Deadpool and Wolverine</item>
+        <item>Despicable Me 4</item>
+        <item>Despicable Me 4</item>
+        <item>Despicable Me 4</item>
+        <item>Spider-Man: Beyond the Spider-Verse</item>
+        <item>Spider-Man: Beyond the Spider-Verse</item>
+        <item>Spider-Man: Beyond the Spider-Verse</item>
+        <item>Beetlejuice Beetlejuice</item>
+        <item>Beetlejuice Beetlejuice</item>
+        <item>Beetlejuice Beetlejuice</item>
+    </string-array>
+
+    <string-array name="vetit_helyszin">
+        <!-- Dune: Part Two helyszínei -->
+        <item>Keleti terem</item>
+        <item>Nyugati terem</item>
+        <item>Déli terem</item>
+        <!-- Joker: Folie à Deux helyszínei -->
+        <item>Keleti terem</item>
+        <item>Nyugati terem</item>
+        <item>Déli terem</item>
+        <!-- A Quiet Place: Day One helyszínei -->
+        <item>Keleti terem</item>
+        <item>Nyugati terem</item>
+        <item>Déli terem</item>
+        <!-- Love Lies Bleeding helyszínei -->
+        <item>Keleti terem</item>
+        <item>Nyugati terem</item>
+        <item>Déli terem</item>
+        <!-- Furiosa: A Mad Max Saga helyszínei -->
+        <item>Keleti terem</item>
+        <item>Nyugati terem</item>
+        <item>Déli terem</item>
+        <!-- The Lord of the Rings: The War of the Rohirrim helyszínei -->
+        <item>Keleti terem</item>
+        <item>Nyugati terem</item>
+        <item>Déli terem</item>
+        <!-- Deadpool and Wolverine helyszínei -->
+        <item>Keleti terem</item>
+        <item>Nyugati terem</item>
+        <item>Déli terem</item>
+        <!-- Despicable Me 4 helyszínei -->
+        <item>Keleti terem</item>
+        <item>Nyugati terem</item>
+        <item>Déli terem</item>
+        <!-- Spider-Man: Beyond the Spider-Verse helyszínei -->
+        <item>Keleti terem</item>
+        <item>Nyugati terem</item>
+        <item>Déli terem</item>
+        <!-- Beetlejuice Beetlejuice helyszínei -->
+        <item>Keleti terem</item>
+        <item>Nyugati terem</item>
+        <item>Déli terem</item>
+    </string-array>
+
+
+    <array name="vetit_ido">
+        <!-- Dune: Part Two időpontjai -->
+        <item>2024-05-12 10:00</item>
+        <item>2024-05-12 12:00</item>
+        <item>2024-05-12 14:00</item>
+        <!-- Joker: Folie à Deux időpontjai -->
+        <item>2024-05-12 10:00</item>
+        <item>2024-05-12 12:00</item>
+        <item>2024-05-12 14:00</item>
+        <!-- A Quiet Place: Day One időpontjai -->
+        <item>2024-05-12 10:00</item>
+        <item>2024-05-12 12:00</item>
+        <item>2024-05-12 14:00</item>
+        <!-- Love Lies Bleeding időpontjai -->
+        <item>2024-05-12 10:00</item>
+        <item>2024-05-12 12:00</item>
+        <item>2024-05-12 14:00</item>
+        <!-- Furiosa: A Mad Max Saga időpontjai -->
+        <item>2024-05-12 10:00</item>
+        <item>2024-05-12 12:00</item>
+        <item>2024-05-12 14:00</item>
+        <!-- The Lord of the Rings: The War of the Rohirrim időpontjai -->
+        <item>2024-05-12 10:00</item>
+        <item>2024-05-12 12:00</item>
+        <item>2024-05-12 14:00</item>
+        <!-- Deadpool and Wolverine időpontjai -->
+        <item>2024-05-12 10:00</item>
+        <item>2024-05-12 12:00</item>
+        <item>2024-05-12 14:00</item>
+        <!-- Despicable Me 4 időpontjai -->
+        <item>2024-05-12 10:00</item>
+        <item>2024-05-12 12:00</item>
+        <item>2024-05-12 14:00</item>
+        <!-- Spider-Man: Beyond the Spider-Verse időpontjai -->
+        <item>2024-05-12 10:00</item>
+        <item>2024-05-12 12:00</item>
+        <item>2024-05-12 14:00</item>
+        <!-- Beetlejuice Beetlejuice időpontjai -->
+        <item>2024-05-12 10:00</item>
+        <item>2024-05-12 12:00</item>
+        <item>2024-05-12 14:00</item>
+    </array>
+
+
 
 </resources>
