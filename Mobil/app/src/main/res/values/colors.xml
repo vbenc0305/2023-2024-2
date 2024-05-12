@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue_gradient_start">#2979FF</color> <!-- Kezdő szín az átmenetnek -->
+    <color name="blue_gradient_end">#448AFF</color>
 </resources>

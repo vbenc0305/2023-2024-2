@@ -1,46 +1,53 @@
 package bence.varga.mozijegy.view;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
+import androidx.core.view.MenuItemCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
-import java.util.Objects;
+import java.util.ArrayList;
 
 import bence.varga.mozijegy.R;
+import bence.varga.mozijegy.model.Movie;
 
+/**
+ * A fő tevékenység az alkalmazásban, amely kezeli a bejelentkezést és a kijelentkezést.
+ */
 public class MainActivity extends AppCompatActivity {
 
-
-    private Button LoginButton;
     private Button logoutButton;
-    private FirebaseUser user;
-
-
-
-
-    private static final String PREF_KEY = Objects.requireNonNull(MainActivity.class.getPackage()).toString();
-
-
-
-    public Button getLoginButton() {
-        return LoginButton;
-    }
-
-    public void setLoginButton() {
-        LoginButton = findViewById(R.id.buttonLogin);
-    }
-
+    // Üzenetek
+    private static final String LOGGED_IN_MESSAGE = "Üdvözöllek, %s!";
+    private static final String LOG_TAG = "MainActivity";
+    private static final String LOGGED_OUT_MESSAGE = "Sikeresen kijelentkeztél.";
+    private RecyclerView recyclerView;
+    private ArrayList<Movie> mItem;
+    private MovieAdapter mAdapter;
+    private FirebaseFirestore mFirestore;
+    private CollectionReference mItems;
+    private int gridNumber = 1;
+    private final int AB= R.id.aboutUs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,40 +59,142 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Kijelentkezés gomb inicializálása
         logoutButton = findViewById(R.id.buttonLogout);
-
-        boolean isLoggedIn = getIntent().getBooleanExtra("isLoggedIn", false);
-        user= FirebaseAuth.getInstance().getCurrentUser();
-        if (user!= null) {
-            // Ha bejelentkezett, akkor megváltoztatjuk a főoldal tartalmát
-            String userName = getSharedPreferences(PREF_KEY, MODE_PRIVATE).getString("email", "");
-            Toast.makeText(this, "Üdvözöllek, " + user.getDisplayName() + "!", Toast.LENGTH_SHORT).show();
-
-            // A kijelentkezés gomb logikájának beállítása
-            setupLogoutButton();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Ha be van jelentkezve a felhasználó, üdvözlő üzenetet jelenítünk meg
+            String userName = user.getDisplayName();
+            Toast.makeText(this, String.format(LOGGED_IN_MESSAGE, userName), Toast.LENGTH_SHORT).show();
+            initializeLogoutButton();
         } else {
-            // Ha még nem jelentkezett be, akkor a normál főoldalt jelenítjük meg
+            // Ha nincs bejelentkezve a felhasználó, a bejelentkezési gombot jelenítjük meg
             setContentView(R.layout.activity_main);
-
-            setLoginButton();
-
-            getLoginButton().setOnClickListener(v -> {
-                // Intent létrehozása a LoginActivity-re való átvitelhez
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            });
+            Button loginButton = findViewById(R.id.buttonLogin);
+            loginButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, LoginActivity.class)));
         }
+
+
+        recyclerView = findViewById(R.id.movieRecycleView);
+
+        recyclerView.setLayoutManager(new GridLayoutManager(this, gridNumber));
+        mItem = new ArrayList<>();
+
+        mAdapter = new MovieAdapter(this, mItem);
+        recyclerView.setAdapter(mAdapter);
+
+        mFirestore = FirebaseFirestore.getInstance();
+        mItems = mFirestore.collection("movies");
+
+        queryData();
+        initData();
+    }
+
+    private void queryData() {
+       mItem.clear();
+
+       mItems.orderBy("name").limit(10).get().addOnSuccessListener(queryDocumentSnapshots -> {
+           for(QueryDocumentSnapshot docu: queryDocumentSnapshots){
+              Movie movie =docu.toObject(Movie.class);
+              mItem.add(movie);
+           }
+
+           if(mItem.isEmpty()){
+               initData();
+               queryData();
+           }
+
+           mAdapter.notifyDataSetChanged();
+
+       });
+    }
+
+    private void initData() {
+        // Ellenőrizzük, hogy a 'movies' gyűjtemény üres-e
+        mItems.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                // Ha a lekérdezés sikeres, de nincs dokumentum
+                if (task.getResult().isEmpty()) {
+                    // Adatok feltöltése
+                    uploadData();
+                }
+            } else {
+                Log.e(LOG_TAG, "Error getting documents: ", task.getException());
+            }
+        });
+    }
+
+    private void uploadData() {
+        String[] movieInfo = getResources().getStringArray(R.array.movie_desc);
+        String[] movieTitle = getResources().getStringArray(R.array.movieNames);
+        String[] movieGenre = getResources().getStringArray(R.array.genre);
+
+        TypedArray itemImgRes = getResources().obtainTypedArray(R.array.img);
+
+        for (int i = 0; i < movieTitle.length; i++) {
+            mItems.add(new Movie(
+                    movieTitle[i],
+                    movieInfo[i],
+                    movieGenre[i],
+                    itemImgRes.getResourceId(i, 0)));
+            Log.e(LOG_TAG, "Movie added");
+        }
+
+        itemImgRes.recycle();
     }
 
 
-    private void setupLogoutButton() {
+
+    /**
+     * A kijelentkezés gomb eseménykezelőjének inicializálása.
+     */
+    private void initializeLogoutButton() {
+        if (logoutButton == null) {
+            return;
+        }
         logoutButton.setOnClickListener(v -> {
-            // Kijelentkezés logika: visszairányítás a főoldalra (Home-ra) és beállítás, hogy nincs bejelentkezve
+            // Kijelentkezési logika
+            FirebaseAuth.getInstance().signOut();
+            Toast.makeText(MainActivity.this, LOGGED_OUT_MESSAGE, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MainActivity.this, MainActivity.class);
-            intent.putExtra("isLoggedIn", false); // Bejelentkezési állapot megváltoztatása
+            intent.putExtra("isLoggedIn", false);
             startActivity(intent);
-            finish(); // Finish() hívása azért, hogy ne legyen visszalépési lehetőség a főoldalra
+            finish();
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.filmlismenu, menu);
+        MenuItem menuItem = menu.findItem(R.id.search_bar);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+               Log.d(LOG_TAG, newText);
+               mAdapter.getFilter().filter(newText);
+               return false;
+            }
+        });
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.aboutUs) {
+            Log.d(LOG_TAG, "About us clicked");
+
+        }
+        if (item.getItemId() == R.id.jegyeim) {
+            Log.d(LOG_TAG, "jegyeim clciked");
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -17,4 +17,73 @@
     <string name="LoginSuccesfull">Sikeresen bejelentkeztél!</string>
     <string name="logout">Kijelentkezés</string>
     <string name="google_login_btn_text">Bejelentkezés Google fiókkal</string>
+    <string name="filmkep">Filmhez tartozo kep</string>
+    <string name="default_web_client_id">227232777268-6v72jgfg3dp9r7gpvr07rgb9q8ei0m9o.apps.googleusercontent.com</string>
+    <string name="movieTitlePlaceholder">Movie Title</string>
+    <string name="MovieImgPlaceholder">FilmKep</string>
+    <string name="movieDescPlaceholder">Leiras\n</string>
+    <string name="VetitesBtn">Vetítések listázása</string>
+    <string name="genre_placeholder">genre placeholder</string>
+    <string name="search_bar">search_bar</string>
+    <string name="rolunk">rolunk</string>
+    <string name="jegyeim">jegyeim</string>
+    <string name="vetitesek">Vetítések</string>
+    <string name="vetites_ideje">vetites ideje</string>
+    <string name="sz_kek_sz_ma">Székek száma:</string>
+    <string name="helyfoglalas">Helyfoglalas</string>
+
+    <string-array name="movieNames">
+        <item>Dune: Part Two</item>
+        <item>Joker: Folie à Deux</item>
+        <item>A Quiet Place: Day One</item>
+        <item>Love Lies Bleeding</item>
+        <item>Furiosa: A Mad Max Saga</item>
+        <item>The Lord of the Rings: The War of the Rohirrim</item>
+        <item>Deadpool and Wolverine</item>
+        <item>Despicable Me 4</item>
+        <item>Spider-Man: Beyond the Spider-Verse</item>
+        <item>Beetlejuice Beetlejuice</item>
+    </string-array>
+
+    <string-array name="movie_desc">
+        <item>A fiatal Paul Atreides csatlakozik a Fremen néphez, hogy bosszút álljon a Harkonnen házon, és megváltoztassa az Arrakis sorsát.</item>
+        <item>A pszichológiai thrillerben Arthur Fleck, azaz Joker és Harley Quinn veszélyes kapcsolatba keverednek, ami Gotham városát is fenyegeti.</item>
+        <item>A csendes világban, ahol a zajos lények vadásznak az emberekre, egy nő megpróbálja túlélni az első támadást New York Cityben.</item>
+        <item>Egy edzőterem menedzsere és egy testépítő nő szenvedélyes kapcsolatba keveredik, ami gyilkosságok sorozatához vezet.</item>
+        <item>A fiatal Furiosa menekül egy zsarnok háborús úrtól, és visszatér szülőhazájába, miközben harcokkal teli útján szövetségesekre és ellenségekre talál.</item>
+        <item>A Rohan királyának, Helm Hammerhandnek a legendás története, aki megvédi királyságát a Dunlendings hadától.</item>
+        <item>Deadpool és Wolverine összefog, hogy legyőzzenek egy közös ellenséget, miközben Deadpool a multiverzum különböző pontjaira látogat.</item>
+        <item>Gru és családja, beleértve a legújabb tagot, Gru Jr.-t, szembesülnek Maxime Le Mal és barátnője, Valentina által okozott veszéllyel.</item>
+        <item>Miles Morales újra akcióban! Miután újra találkozik Gwen Stacyvel, Miles a multiverzumon keresztül száguld, hogy szembenézzen egy új, hatalmas ellenséggel, a Spot-tal. A kaland során számos másik Pók-emberrel is találkozik, de vajon sikerül-e megmentenie a multiverzumot?</item>
+        <item>A Deetz család három generációja visszatér Winter Riverbe, ahol Lydia lányának, Astridnek köszönhetően újra megnyílik a kapu a Túlvilágra.</item>
+    </string-array>
+
+
+    <string-array name="genre">
+        <item>Sci-Fi</item>
+        <item>Thriller</item>
+        <item>Horror</item>
+        <item>Thriller</item>
+        <item>Kaland</item>
+        <item>Animációs</item>
+        <item>Akció</item>
+        <item>Animációs</item>
+        <item>Animációs</item>
+        <item>Horror</item>
+    </string-array>
+
+
+    <array name="img">
+        <item>@drawable/dune2</item>
+        <item>@drawable/joker</item>
+        <item>@drawable/quiet</item>
+        <item>@drawable/lovelies</item>
+        <item>@drawable/madmax</item>
+        <item>@drawable/lotr</item>
+        <item>@drawable/deadpool</item>
+        <item>@drawable/despicable</item>
+        <item>@drawable/spider</item>
+        <item>@drawable/beetle</item>
+    </array>
+
 </resources>

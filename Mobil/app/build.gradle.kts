@@ -10,10 +10,11 @@ android {
 
     defaultConfig {
         applicationId = "bence.varga.mozijegy"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        multiDexEnabled = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -39,6 +40,12 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.recyclerview)
+    implementation(libs.recyclerview.selection)
+    implementation(libs.glide)
+    implementation(libs.cardview)
+    implementation(libs.firebase.firestore)
+    implementation(libs.multidex)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
